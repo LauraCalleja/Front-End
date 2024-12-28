@@ -1,6 +1,43 @@
-Aquí está el código que aparece en la imagen que proporcionaste:
+if (document.readyState === "loading") {
+    console.log("Document is loading");
+    document.addEventListener("DOMContentLoaded", function() {
+        console.log("Document ready after waiting!");
+        initializeCode();
+    });
+} else {
+    console.log("Document is ready");
+    initializeCode();
+}
 
-```javascript
+let panicCounter = 0;
+
+function initializeCode() {
+    const addTextButton = document.getElementById("add-text");
+    addTextButton.addEventListener("click", function() {
+        const bigText = document.getElementById("big-text");
+        bigText.innerHTML = bigText.innerHTML + (Math.random() + 1).toString(36);
+    });
+
+    const panicButton = document.getElementById("panic-button");
+    panicButton.addEventListener("click", function() {
+        const panicArea = document.getElementById("panic-area");
+        let newParagraph = document.createElement("p");
+
+        let stars = "*".repeat(panicCounter++);
+        newParagraph.innerHTML = stars + " PANIC " + stars;
+        panicArea.appendChild(newParagraph);
+    });
+
+    const reducePanicButton = document.getElementById("reduce-panic-button");
+    reducePanicButton.addEventListener("click", function() {
+        const panicArea = document.getElementById("panic-area");
+        panicArea.removeChild(panicArea.lastChild);
+        panicCounter--;
+    });
+}
+
+
+'''
 console.log("Hello!");
 
 let numbers = [];
@@ -42,4 +79,5 @@ while (students.length > 0) {
 }
 
 console.log(students);
-```
+
+'''
