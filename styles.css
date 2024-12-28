@@ -49,3 +49,31 @@ nav {
     padding: 10px;
 }
 
+.special-text {
+    color: darkmagenta;
+    border: 2px groove #ff0099;
+    padding: 2px;
+}
+
+h2, p {
+    display: block;
+}
+
+img {
+    position: static;
+    top: 0;
+    left: 0;
+}
+
+p {
+    letter-spacing: 0.1em;
+    line-height: 1.5em;
+    text-align: justify;
+    text-indent: 1em;
+    text-transform: capitalize;
+    word-spacing: 0.1em;
+}
+
+h2 {
+    text-transform: uppercase;
+}
