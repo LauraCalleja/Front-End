@@ -4,6 +4,15 @@ const fs = require("fs");
 
 let poems = [];
 
+fs.readFile("./data/poems.json", "utf-8", (err, data) => {
+    if (err) {
+        console.log(err);
+        return;
+    }
+    poems = JSON.parse(data);
+    console.log("Data loaded!");
+});
+
 router.get("/", (req, res) => {
     res.json(poems);
 });
