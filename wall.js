@@ -26,27 +26,33 @@ if (document.readyState === "loading") {
   });
 }
 
+
+
 function initializeCode() {
-  const addPoemButton = document.getElementById("add-poem");
-  addPoemButton.addEventListener("click", function () {
-    const poemInput = document.getElementById("poem-input");
-    const vip = document.getElementById("vip");
-    addNewPoem(poemInput.value, vip.checked);
-  });
+    const options = {};
+    const elems = document.querySelectorAll('.sidenav');
+    const instances = M.Sidenav.init(elems, options);
 
-const addPoemButtonFromApi = document.getElementById("add-poem-from-api");
-
-addPoemButtonFromApi.addEventListener("click", function () {
-  fetch("https://jsonplaceholder.typicode.com/posts")
-    .then((response) => response.json())
-    .then((data) => {
-      data.forEach((poem) => {
-        addNewPoem(poem.title, false);
-      });
+    const addPoemButton = document.getElementById('add-poem');
+    addPoemButton.addEventListener('click', function () {
+        const poemInput = document.getElementById('poem-input');
+        const vip = document.getElementById('vip');
+        addNewPoem(poemInput.value, vip.checked);
     });
-});
 
-// loadJson()
+    const addPoemButtonFromApi = document.getElementById('add-poem-from-api');
+    addPoemButtonFromApi.addEventListener('click', function () {
+        fetch('https://jsonplaceholder.typicode.com/posts')
+            .then(response => response.json())
+            .then(data => {
+                data.forEach(poem => 
+                    addNewPoem(poem.title, false)
+                );
+            });
+    });
+
+    // LoadJson();
+}
 
 async function loadJson() {
   let url = "https://jsonplaceholder.typicode.com/posts";
@@ -58,9 +64,6 @@ async function loadJson() {
     addNewPoem(poem.title, false);
   });
 }
-
-
-
 
 }
 
