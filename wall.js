@@ -33,12 +33,25 @@ function initializeCode() {
     const elems = document.querySelectorAll('.sidenav');
     const instances = M.Sidenav.init(elems, options);
 
-    const addPoemButton = document.getElementById('add-poem');
-    addPoemButton.addEventListener('click', function () {
-        const poemInput = document.getElementById('poem-input');
-        const vip = document.getElementById('vip');
-        addNewPoem(poemInput.value, vip.checked);
-    });
+ addPoemButton.addEventListener("click", function () {
+    const poemInput = document.getElementById("poem-input");
+    const vip = document.getElementById("vip");
+
+    fetch("http://localhost:8000/api/poems", {
+        method: "post",
+        headers: {
+            "Content-type": "application/json",
+        },
+        body: '{ "poem": "' + poemInput.value + '" }',
+    })
+        .then(response => response.json())
+        .then(data => {
+            console.log(data);
+        });
+
+    addNewPoem(poemInput.value, vip.checked);
+});
+
 
     const addPoemButtonFromApi = document.getElementById('add-poem-from-api');
     addPoemButtonFromApi.addEventListener('click', function () {
