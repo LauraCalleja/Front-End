@@ -84,3 +84,12 @@ p {
 h2 {
     text-transform: uppercase;
 }
+
+main #article-container {
+    display: flex;
+}
+
+main #article-container article {
+    flex-shrink: 0;
+    width: 200px;
+}
